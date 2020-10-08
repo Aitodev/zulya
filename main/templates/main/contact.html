@@ -1,0 +1,77 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block title %}Контакты{% endblock %}
+{% block content %}
+    <div class="main-wrapper">
+        {% include 'header.html' %}
+        {% include 'mobile-header.html' %}
+        <div class="breadcrumb-area bg-img" style="background-image:url(https://demo.hasthemes.com/daxone-preview/daxone/assets/images/bg/breadcrumb.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>Наши контакты</h2>
+                    <ul>
+                        <li>
+                            <a href="{% url 'main:index' %}">Главная</a>
+                        </li>
+                        <li class="active">Контакты </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contact-area pt-85 pb-90">
+            <div class="container">
+                <div class="contact-info-wrap mb-50">
+                    <h3>contact info</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="single-contact-info text-center mb-30">
+                                <i class="ti-location-pin"></i>
+                                <h4>Наш адресс</h4>
+                                <p>Боконбаева 105/3 </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="single-contact-info extra-contact-info text-center mb-30">
+                                <ul>
+                                    <li><i class="ti-mobile"></i> 0990-930-555 </li>
+                                    <li><i class="ti-email"></i> <a href="contact.html#"> info@example.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="single-contact-info text-center mb-30">
+                                <i class=" ti-alarm-clock"></i>
+                                <h4>Рабочее время</h4>
+                                <p>Пон - Пят. 9:00am - 5:00pm </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="get-in-touch-wrap">
+                    <h3>Свяжитесь с нами</h3>
+                    <div class="contact-from contact-shadow">
+                        <form id="contact-form" action="http://whizthemes.com/mail-php/contact/mail.php" method="post">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input name="name" type="text" placeholder="Имя">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input name="email" type="email" placeholder="Почта">
+                                </div>
+                                <div class="col-lg-12">
+                                    <textarea name="message" placeholder="Комментарий"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="submit" type="submit">Отправить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </div>
+{% endblock %}
+</html>
