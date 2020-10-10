@@ -100,7 +100,7 @@
                                     <input placeholder="example@gmail.com" name="mail">
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="submit" class="btn btn-main btn-block" value="Подтвердить заказ">
+                                    <input style="border:2px solid red;" type="submit" class="btn btn-main btn-block" value="Подтвердить заказ">
                                 </div>
                             </div>
                             </form>
@@ -115,25 +115,29 @@
                                                 <li>Продукты <span>Итого</span></li>
                                             </ul>
                                         </div>
+                                        {% for item in cart %}
+                                        {% with product=item.product %}
                                         <div class="your-order-middle">
                                             <ul>
-                                                <li>Product Name X 1 <span>$329 </span></li>
+                                                <li>{{ product.name }}<span>{{ product.price }} </span></li>
                                             </ul>
                                         </div>
                                         <div class="your-order-info order-subtotal">
                                             <ul>
-                                                <li>Итого: <span>$329 </span></li>
+                                                <li>Итого: <span>{{ item.total_price }} </span></li>
                                             </ul>
                                         </div>
                                         <div class="your-order-info order-total">
                                             <ul>
-                                                <li>К оплате: <span>$273.00 </span></li>
+                                                <li>К оплате: <span>{{ item.total_price }} </span></li>
                                             </ul>
                                         </div>
+                                        {% endwith %}
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="Place-order mt-40">
-                                    <a href="checkout.html#">Place Order</a>
+                                    <input style="border:2px solid red;" type="submit" class="btn btn-main btn-block" value="Подтвердить заказ">
                                 </div>
                             </div>
                         </div>

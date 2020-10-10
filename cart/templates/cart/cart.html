@@ -49,10 +49,15 @@
                                             <td class="product-price-cart"><span class="amount">{{ product.price }}</span></td>
                                             <td class="product-quantity">
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                                    <form action="{% url 'cart:cart_add' product.id %}" method="POST">
+                                                        {{ item.update_quantity_form.quantity }}
+                                                        {{ item.update_quantity_form.update }}
+                                                        <input type="submit" value="Обновить">
+                                                        {% csrf_token %}
+                                                    </form>
                                                 </div>
                                             </td>
-                                            <td class="product-subtotal">{{ product.price }}</td>
+                                            <td class="product-subtotal">{{ item.total_price }}</td>
                                             <td class="product-remove">
                                                 <a href="{% url 'cart:cart_remove' product.id %}"><i class="la la-close"></i></a>
                                             </td>

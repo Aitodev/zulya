@@ -26,10 +26,23 @@
                         <div class="col-xl-1 col-lg-3">
                             <div class="header-right-wrap mt-40">
                                 <div class="cart-wrap cart-wrap-3 cart-wrap-3-white cart-wrap-hm9">
-                                    <button class="cart-active">
-                                        <i class="la la-shopping-cart"></i>
-                                        <span class="count-style-3">01</span>
-                                    </button>
+                                    {% with total_items=cart|length %}
+                                        {% if cart|length > 0 %}
+                                            <button class="cart-active">
+                                                <a href="{% url 'cart:cart_detail' %}">
+                                                <i class="la la-shopping-cart"></i>
+                                                <span class="count-style-3">{{ total_items }}</span>
+                                                </a>
+                                            </button>
+                                        {% else %}
+                                        <button class="cart-active">
+                                                <a href="{% url 'cart:cart_detail' %}">
+                                                <i class="la la-shopping-cart"></i>
+                                                <span class="count-style-3">0</span>
+                                                </a>
+                                            </button>
+                                        {% endif %}
+                                    {% endwith %}
                                     <div class="shopping-cart-content">
                                         <div class="shopping-cart-top">
                                             <h4>Корзина</h4>

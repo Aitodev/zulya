@@ -1,10 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Sizes
+from .models import Product, Sizes, Categories
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def index(request):
-    return render(request, 'main/index.html')
+def index(request, slug_category=None):
+    category = Categories.objects.all()
+    product = Product.objects.all().order_by('-date')
+    selected_category = ''
+
+    if slug_category:
+        category = Categories.objects.all()
+        selected_category = get_object_or_404(Categories, slug_category=slug_category)
+        product = Product.objects.filter(category=selected_category).order_by('-id')
+
+    context = {
+        'category': category,
+        'product': product,
+    }
+    return render(request, 'main/index.html', context)
 
 
 def shop(request):
@@ -35,7 +48,7 @@ def product(request, slug_product):
 
 
 def product_detail(request, id, slug):
-    product = get_object_or_404(Product, Sizes,  id=id, slug=slug)
+    product = get_object_or_404(Product, id=id, slug=slug)
     return render(request, 'main/product-details.html', {'product': product})
 
 

@@ -22,6 +22,8 @@ def cart_add(request, product_id):
             cd['sizes'] = 'Не задан'
         cart.add(product=product, update_quantity=cd['update'], colors=cd['colors'],
                  sizes=cd['sizes'])
+
+
     return redirect('cart:cart_detail')
 
 
@@ -41,7 +43,11 @@ def cart_detail(request):
 
 
 def order(request):
-    return render(request, 'cart/order.html')
+    cart = Cart(request)
+    context = {
+        'cart': cart
+    }
+    return render(request, 'cart/order.html',context)
 
 
 class OrderSendView(View):

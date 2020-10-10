@@ -15,6 +15,11 @@
                             <a href="{% url 'main:index' %}">Главная</a>
                         </li>
                         <li class="active">Магазин</li>
+                        {% if selected_category %}
+                        <li><a class="active" href="/shop/{{ selected_category.slug_category }}">{{ selected_category }}</a>
+                        </li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
