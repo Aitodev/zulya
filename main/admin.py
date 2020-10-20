@@ -39,6 +39,7 @@ class ProductConfig(admin.ModelAdmin):
     fields = ('name',
               'category',
               'img',
+              'img2',
               'price',
               'materials',
               'colors',

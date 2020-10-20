@@ -41,15 +41,14 @@ def shop(request):
 
 def product(request, slug_product):
     product = get_object_or_404(Product, slug_product__iexact=slug_product)
+    cart_product_form = CartAddProductForm()
+    cart = Cart(request)
     context = {
         'product': product,
+        'cart_product_form': cart_product_form,
+        'cart': cart,
     }
-    return render(request, 'main/product-details.html', context)
-
-
-def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug)
-    return render(request, 'main/product-details.html', {'product': product})
+    return render(request, 'mainasia/single_shop.html', context)
 
 
 def about(request):

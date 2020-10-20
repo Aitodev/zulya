@@ -57,6 +57,7 @@ class Product(models.Model):
     category = models.ForeignKey(Categories, verbose_name='Категория', related_name='category',
                                  on_delete=models.PROTECT, blank=True, null=True)
     img = models.ImageField(verbose_name='Изображение 1', upload_to='media/products')
+    img2 = models.ImageField(verbose_name='Изображение 2', upload_to='media/products')
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
     materials = models.ManyToManyField(Materials, verbose_name='Материалы', related_name='materials')
     colors = models.ManyToManyField(Colors, verbose_name='Цвета', related_name='colors')

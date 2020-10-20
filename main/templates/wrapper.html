@@ -15,7 +15,8 @@
     <!-- CSS
 	============================================ -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
     <!-- Icon Font CSS -->
@@ -63,7 +64,25 @@
     <script src="{% static 'js/plugins/smoothscroll.js' %}"></script>
     <script src="{% static 'js/filter/main.js' %}"></script>
     <!-- Main JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.product-img').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
+        });
+    </script>
     <script src="{% static 'js/main.js' %}"></script>
+    
+				
 
 
 </html>

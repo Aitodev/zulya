@@ -16,185 +16,6 @@
     });
     
     
-    /* Slider active */
-    $('.slider-active').owlCarousel({
-        loop: true,
-        nav: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        navText: ['<i class="la la-angle-up"></i>', '<i class="la la-angle-down"></i>'],
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        dotsData: true,
-        item: 1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    });
-    
-    /* Slider active 2 */
-    $('.slider-active-2').owlCarousel({
-        loop: true,
-        nav: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        navText: ['<i class="la la-angle-left"></i>', '<i class="la la-angle-right"></i>'],
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    });
-    
-    /* Slider active 3 */
-    $('.slider-active-3').owlCarousel({
-        loop: true,
-        nav: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        navText: ['<i class="la la-arrow-left"></i>', '<i class="la la-arrow-right"></i>'],
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    });
-    
-    /* Slider active 4 */
-    $('.slider-active-4').owlCarousel({
-        loop: true,
-        nav: false,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    });
-    
-    /* Product slider active */
-    $('.product-slider-active').owlCarousel({
-        loop: true,
-        nav: false,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 4,
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1200: {
-                items: 4
-            }
-        }
-    });
-    
-    /* Product slider active 2 */
-    $('.product-slider-active-2').owlCarousel({
-        loop: true,
-        nav: false,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 5,
-        responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1200: {
-                items: 5
-            }
-        }
-    });
-    
-    /* Product slider active 3 */
-    $('.product-slider-active-3').owlCarousel({
-        loop: true,
-        nav: false,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        animateOut: 'fadeOut',
-        animateIn: 'fadeIn',
-        item: 3,
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1
-            },
-            576: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            },
-            1200: {
-                items: 3
-            }
-        }
-    });
-    
-    
     /*====== mobile off canvas active ======*/
     function headermobileAside() {
         var navbarTrigger = $('.mobile-aside-button'),
@@ -341,36 +162,6 @@
             }
         });
     }
-    
-    /*--- Quickview slide active ---*/
-    $('.quickview-slide-active').owlCarousel({
-        loop: true,
-        navText: ["<i class='la la-angle-left'></i>", "<i class='la la-angle-right'></i>"],
-        margin: 15,
-        smartSpeed: 1000,
-        nav: true,
-        dots: false,
-        responsive: {
-            0: {
-                items: 3,
-                autoplay: true,
-                smartSpeed: 300
-            },
-            576: {
-                items: 3
-            },
-            768: {
-                items: 3
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
-    
-    $('.quickview-slide-active a').on('click', function() {
-        $('.quickview-slide-active a').removeClass('active');
-    })
     
     /*----------------------------
     	Cart Plus Minus Button
@@ -991,8 +782,39 @@
             scrollTarget: link.hash
         });
     });
-    
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Вперед/назад элементы управления
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Элементы управления миниатюрами изображений
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
     
     
 })(jQuery);
+
+console.log('loh')
+
+
 

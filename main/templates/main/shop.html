@@ -63,11 +63,22 @@
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                             <div class="product-wrap mb-35">
                                                 <div class="product-img mb-15">
-                                                    <a href="{{ p.slug_product }}"><img src="{{ p.img.url }}" alt="product"></a>
-                                                    <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="shop-fullwide-no-sidebar.html#"><i class="la la-plus"></i></a>
+                                                    <div class='img__slider'>
+                                                        <a href="{{ p.slug_product }}">
+                                                        {% if p.img %}
+                                                        <img src="{{ p.img.url }}" alt="product">
+                                                        {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    <div class='img__slider'>
+                                                        <a href="{{ p.slug_product }}">
+                                                        {% if p.img2 %}
+                                                        <img src="{{ p.img2.url }}" alt="product">
+                                                        {% endif %}
+                                                        </a>
                                                     </div>
                                                 </div>
+                                                 
                                                 <div class="product-content">
                                                     <span>{{ p.category }}</span>
                                                     <h4><a href="product-details.html">{{ p.name }}</a></h4>
