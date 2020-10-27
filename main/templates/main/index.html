@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-area pt-90 pb-90">
+        {% comment %} <div class="product-area pt-90 pb-90">
             <div class="container">
                 <div class="section-title-2 text-center">
                     <h2>Рекомендуемые продукты</h2>
@@ -112,7 +112,13 @@
                     {% for p in product %}
                     <div class="product-wrap product-border-1 product-img-zoom">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="{{ p.img.url }}" alt="product"></a>
+                            <a href="product-details.html">
+                            {% if p.img %}
+                            <img src="{{ p.img.url }}" alt="product"></a>
+                            {% endif %}
+                            {% if p.img2 %}
+                            <img src="{{ p.img2.url }}" alt="product">
+                            {% endif %}
                             <div class="product-action-2">
 
                                 <form action="{% url 'cart:cart_add' p.id %}" method="POST">
@@ -134,7 +140,7 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
 <!--         <div class="overview-area pt-50 bg-yellow-light-2">
             <div class="container">
                 <div class="row align-items-center">
@@ -165,7 +171,7 @@
         <div class="section-title" data-aos="fade-up">
           <h2>Магазин</h2>
             {% if selected_category %}
-            <li><a class="active" href="/shop/{{ selected_category.slug_category }}">{{ selected_category }}</a></li>
+            <li><a class="active" href="/shop/categories/{{ selected_category.slug_category }}">{{ selected_category }}</a></li>
             {% endif %}
           <p>Тут показыны все продукты </p>
         </div>
@@ -174,7 +180,7 @@
           <div class="col-lg-12 d-flex justify-content-center">
               {% for c in category %}
                 <ul id="portfolio-flters">
-                    <a href="/shop/{{ c.slug_category }}"><li>{{ c.name }}</li></a>
+                    <a href="/shop/categories/{{ c.slug_category }}"><li>{{ c.name }}</li></a>
                 </ul>
               {% endfor %}
           </div>
@@ -196,7 +202,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="product-wrap product-border-1 product-img-zoom mb-30">
                                     <div class="product-img">
-                                        <a href="product-details.html"><img src="{{ p.img.url }}" alt="product"></a>
+                                        <a href="shop/{{ p.slug_product }}"><img src="{{ p.img.url }}" alt="product"></a>
                                         <div class="product-action-2">
                                             <form action="{% url 'cart:cart_add' p.id %}" method="POST">
                                                 {% csrf_token %}
@@ -206,7 +212,7 @@
                                         </div>
                                     </div>
                                     <div class="product-content product-content-padding">
-                                        <h4><a href="product-details.html">{{ p.name }}</a></h4>
+                                        <h4><a href="{{ p.slug_product }}">{{ p.name }}</a></h4>
                                         <div class="price-addtocart">
                                             <div class="product-price">
                                                 <span>{{ p.price }}</span>

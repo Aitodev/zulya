@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Sizes, Categories
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from cart.forms import CartAddProductForm
+from cart.cart import Cart
 
 
 def index(request, slug_category=None):
@@ -25,7 +27,7 @@ def shop(request):
     product_list = Product.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(product_list, 10)
+    paginator = Paginator(product_list, 6)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -43,12 +45,12 @@ def product(request, slug_product):
     product = get_object_or_404(Product, slug_product__iexact=slug_product)
     cart_product_form = CartAddProductForm()
     cart = Cart(request)
-    context = {
+    context = {                                               
         'product': product,
         'cart_product_form': cart_product_form,
         'cart': cart,
     }
-    return render(request, 'mainasia/single_shop.html', context)
+    return render(request, 'main/product-details.html', context)
 
 
 def about(request):

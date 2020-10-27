@@ -3,6 +3,83 @@
 {% block title %}Детальная страница{% endblock %}
 {% block content %}
 <body>
+    <style>
+        .slider {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .draggable {
+            width: calc(100% - 120px) !important;
+        }
+        .slick-track {
+            display: flex;
+            align-items: center;
+        }
+        .slick-prev {
+            border: none;
+            background: #f6424c;
+            font-size: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            position: relative;
+        }
+        .slick-prev::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-60%, -50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 10px 5px 0;
+            border-color: transparent #000000 transparent transparent;
+        }
+        .slick-next {
+            border: none;
+            background: #f6424c;
+            font-size: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            position: relative;
+        }
+        .slick-next::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 10px;
+            border-color: transparent transparent transparent #000000;
+        }
+        .slick-dots {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .slick-dots > li {
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+        .slick-dots > li.slick-active > button {
+            background: #f6424c;
+        }
+        .slick-dots > li > button {
+            border: none;
+            font-size: 0;
+            background: #ccc;
+            height: 12px;
+            border-radius: 100%;
+        }
+    </style>
     <div class="main-wrapper">
         {% include 'header.html' %}
         {% include 'mobile-header.html' %}
@@ -24,7 +101,48 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="product-details-img-left">
-                            <img class="zoompro" src="{{ product.img.url }}" data-zoom-image="assets/images/product-details/product-detalis-bl1.jpg" alt="product-details-img">
+                            <div class="slider">
+                                <div class="slider-item">
+                                    {% if product.img %}
+                                    <img class="zoompro" src="{{ product.img.url }}" data-zoom-image="{{ product.img.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                    {% if product.img2 %}
+                                    <img class="zoompro" src="{{ product.img2.url }}" data-zoom-image="{{ product.img2.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                     {% if product.img3 %}
+                                    <img class="zoompro" src="{{ product.img3.url }}" data-zoom-image="{{ product.img3.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                     {% if product.img4 %}
+                                    <img class="zoompro" src="{{ product.img4.url }}" data-zoom-image="{{ product.img4.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                     {% if product.img5 %}
+                                    <img class="zoompro" src="{{ product.img5.url }}" data-zoom-image="{{ product.img5.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                     {% if product.img6 %}
+                                    <img class="zoompro" src="{{ product.img6.url }}" data-zoom-image="{{ product.img6.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                                <div class="slider-item">
+                                     {% if product.img7 %}
+                                    <img class="zoompro" src="{{ product.img7.url }}" data-zoom-image="{{ product.img7.url }}" alt="product-details-img">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(document).ready(function(){
+                                    $('.slider').slick({});
+                                });
+                            </script>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -59,7 +177,7 @@
                             </div>
                             <div class="pro-details-quality">
                                 <div class="cart-plus-minus">
-                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="100">
                                 </div>
                             </div>
                             <div class="pro-details-buy-now btn-hover btn-hover-radious">
@@ -78,5 +196,12 @@
         {% include 'modal_wrapper.html' %}
         <!-- Modal end -->
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $('.slider').slick({
+            dots: true
+        });
+    </script>
 </body>
 {% endblock %}
