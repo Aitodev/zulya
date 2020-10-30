@@ -107,36 +107,36 @@
                                     <img class="zoompro" src="{{ product.img.url }}" data-zoom-image="{{ product.img.url }}" alt="product-details-img">
                                     {% endif %}
                                 </div>
-                                <div class="slider-item">
-                                    {% if product.img2 %}
+                                {% if product.img2 %}
+                                <div class="slider-item"> 
                                     <img class="zoompro" src="{{ product.img2.url }}" data-zoom-image="{{ product.img2.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
+                                {% endif %}
+                                {% if product.img3 %}
                                 <div class="slider-item">
-                                     {% if product.img3 %}
                                     <img class="zoompro" src="{{ product.img3.url }}" data-zoom-image="{{ product.img3.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
-                                <div class="slider-item">
-                                     {% if product.img4 %}
+                                {% endif %}
+                                {% if product.img4 %}
+                                <div class="slider-item">  
                                     <img class="zoompro" src="{{ product.img4.url }}" data-zoom-image="{{ product.img4.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
+                                {% endif %}
+                                {% if product.img5 %}
                                 <div class="slider-item">
-                                     {% if product.img5 %}
                                     <img class="zoompro" src="{{ product.img5.url }}" data-zoom-image="{{ product.img5.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
+                                {% endif %}
+                                {% if product.img6 %}
                                 <div class="slider-item">
-                                     {% if product.img6 %}
                                     <img class="zoompro" src="{{ product.img6.url }}" data-zoom-image="{{ product.img6.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
+                                {% endif %}
+                                {% if product.img7 %}
                                 <div class="slider-item">
-                                     {% if product.img7 %}
                                     <img class="zoompro" src="{{ product.img7.url }}" data-zoom-image="{{ product.img7.url }}" alt="product-details-img">
-                                    {% endif %}
                                 </div>
+                                {% endif %}
                             </div>
                             <script type="text/javascript">
                                 $(document).ready(function(){
